@@ -1091,7 +1091,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activity: document.getElementById("f_activity").value,
         type: val("f_type") || "Editorial",
         season: val("f_season") || "Spring 2026",
-        photographer: val("f_photographer") || "Prateek Saxena",
+        photographer: val("f_photographer") || "nerdyphotographer",
         artDirector: val("f_ad"),
         stylist: val("f_stylist"),
         hair: val("f_hair"),
