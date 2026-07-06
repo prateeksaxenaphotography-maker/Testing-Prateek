@@ -800,16 +800,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       const msInDay = 24 * 60 * 60 * 1000;
       const currentDay = Math.floor(Date.now() / msInDay);
-      let visits7 = 0;
       const seedVal = seedString.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-      for (let i = 0; i < 7; i++) {
-        visits7 += Math.floor(18 + random(currentDay - i + seedVal) * 15);
+      const visits24h = Math.floor(18 + random(currentDay + seedVal) * 15);
+      let visits7d = visits24h;
+      for (let i = 1; i < 7; i++) {
+        visits7d += Math.floor(18 + random(currentDay - i + seedVal) * 15);
       }
-      let visits24 = visits7;
-      for (let i = 7; i < 24; i++) {
-        visits24 += Math.floor(18 + random(currentDay - i + seedVal) * 15);
-      }
-      return { visits7, visits24 };
+      return { visits24h, visits7d };
     }
 
     if (!themeOverrideBtn) {
@@ -849,7 +846,7 @@ document.addEventListener('DOMContentLoaded', () => {
         themeOverrideBtn.style.display = "inline-block";
         
         const stats = getVisitorStats("Lukas Portfolio");
-        visitorStatsLabel.innerHTML = `Visits: <strong>${stats.visits7}</strong> (7d) · <strong>${stats.visits24}</strong> (24d)`;
+        visitorStatsLabel.innerHTML = `Visits: <strong>${stats.visits24h}</strong> (24H) · <strong>${stats.visits7d}</strong> (7D)`;
         visitorStatsLabel.style.display = "inline-block";
       } else {
         themeOverrideBtn.style.display = "none";
