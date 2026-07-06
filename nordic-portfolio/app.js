@@ -1103,6 +1103,7 @@
     } else {
       SHOOTS = window.WPS_DATA?.DEMO_SHOOTS || [];
     }
+    SHOOTS.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
   }
 
   let SHOOTS = [];
