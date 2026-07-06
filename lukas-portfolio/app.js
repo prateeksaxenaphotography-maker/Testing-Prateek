@@ -763,7 +763,13 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       SHOOTS = window.WPS_DATA?.DEMO_SHOOTS || [];
     }
-    SHOOTS.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+    SHOOTS.sort((a, b) => {
+      const dateA = a.date || '';
+      const dateB = b.date || '';
+      if (!dateA) return 1;
+      if (!dateB) return -1;
+      return dateB.localeCompare(dateA);
+    });
   }
 
   function setupAdminMode() {
