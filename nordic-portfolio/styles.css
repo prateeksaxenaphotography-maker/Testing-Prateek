@@ -118,13 +118,41 @@ button {
 
 .logo-link {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   color: var(--text-color-light);
   text-transform: uppercase;
   position: relative;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-logo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-black-img {
+  display: none;
+}
+
+.logo-white-img {
+  display: inline-block;
+}
+
+.theme-light .logo-black-img {
+  display: inline-block;
+}
+
+.theme-light .logo-white-img {
+  display: none;
 }
 
 .logo-link .logo-tld {

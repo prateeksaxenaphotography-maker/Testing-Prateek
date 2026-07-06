@@ -38,7 +38,11 @@
   <header id="main-header">
     <div class="header-container">
       <a href="#/" class="logo-link" id="nav-logo">
-        <span class="logo-brand">thenerdyphotographer</span><span class="logo-tld">.in</span>
+        <div class="logo-container">
+          <img src="assets/logo_white.png" class="site-logo logo-white-img" alt="Logo">
+          <img src="assets/logo_black.png" class="site-logo logo-black-img" alt="Logo">
+          <span class="logo-brand">thenerdyphotographer</span><span class="logo-tld">.in</span>
+        </div>
       </a>
       <nav class="nav-menu" aria-label="Main Navigation">
         <a href="#/" class="nav-item active" id="nav-link-work">Work</a>
@@ -250,7 +254,15 @@
           <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
             <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
               <label for="f_type" style="font-weight:700;">Type</label>
-              <input type="text" id="f_type" placeholder="e.g. Commercial Campaign, Test Shoot" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+              <select id="f_type" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+                <option value="Test Shoot">Test Shoot</option>
+                <option value="Editorial">Editorial</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Campaign">Campaign</option>
+                <option value="Documentary">Documentary</option>
+                <option value="E-commerce">E-commerce</option>
+                <option value="Fine Art">Fine Art</option>
+              </select>
             </div>
             <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
               <label for="f_season" style="font-weight:700;">Season / Year</label>

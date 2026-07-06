@@ -80,6 +80,44 @@ a {
   display: block;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.mobile-logo-container .site-logo {
+  height: 24px;
+}
+
+.logo-black-img {
+  display: none;
+}
+
+.logo-white-img {
+  display: inline-block;
+}
+
+.theme-light .logo-black-img {
+  display: inline-block;
+}
+
+.theme-light .logo-white-img {
+  display: none;
+}
+
 .logo-title {
   font-family: var(--font-serif);
   font-size: 1.6rem;
@@ -988,7 +1026,7 @@ a {
     -webkit-backdrop-filter: blur(8px);
   }
   
-  .mobile-logo {
+  .mobile-logo-text {
     font-family: var(--font-serif);
     font-size: 1.15rem;
     color: var(--text-light);

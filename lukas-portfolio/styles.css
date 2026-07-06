@@ -89,7 +89,39 @@ a {
 
 .logo-link {
   display: inline-block;
-  text-align: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition-smooth);
+}
+
+.site-header.scrolled .site-logo {
+  height: 24px;
+}
+
+.logo-black-img {
+  display: none;
+}
+
+.logo-white-img {
+  display: inline-block;
+}
+
+.theme-light .logo-black-img {
+  display: inline-block;
+}
+
+.theme-light .logo-white-img {
+  display: none;
 }
 
 .logo-title {
