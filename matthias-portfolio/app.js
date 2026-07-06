@@ -95,6 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function router() {
     const hash = window.location.hash || '#/';
     
+    if (typeof gtag === 'function') {
+      gtag('config', 'G-S0Q7T5Y2J4', {
+        'page_path': hash
+      });
+    }
+    
     // Hide all views first
     Object.values(views).forEach(view => {
       view.classList.remove('active');

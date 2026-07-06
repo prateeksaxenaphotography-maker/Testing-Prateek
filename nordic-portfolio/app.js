@@ -102,6 +102,12 @@
   function handleRoute() {
     const hash = window.location.hash || '#/';
     
+    if (typeof gtag === 'function') {
+      gtag('config', 'G-S0Q7T5Y2J4', {
+        'page_path': hash
+      });
+    }
+    
     // Reset document background modifications and body styles
     document.documentElement.style.setProperty('--project-accent-1', '#0a0a0a');
     document.documentElement.style.setProperty('--project-accent-2', '#121212');
