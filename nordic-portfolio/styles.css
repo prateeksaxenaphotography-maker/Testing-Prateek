@@ -691,6 +691,11 @@ button {
   gap: 6rem;
 }
 
+.bottom-editorial-grid.single-column {
+  grid-template-columns: 1fr;
+  max-width: 800px;
+}
+
 .editorial-left {
   display: flex;
   flex-direction: column;

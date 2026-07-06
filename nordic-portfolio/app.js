@@ -422,7 +422,7 @@
 
         <!-- Bottom Technical/Editorial Details -->
         <section class="project-bottom-editorial">
-          <div class="bottom-editorial-grid">
+          <div class="${(!!fallbackTestimonial || !!project.lightingDiagram) ? 'bottom-editorial-grid' : 'bottom-editorial-grid single-column'}">
             
             <!-- Left Column: Story + Credits -->
             <div class="editorial-left">
@@ -476,34 +476,14 @@
                 </div>
               ` : ''}
 
-              <div class="lighting-block">
-                <h3 class="serif-title credits-title">Lighting Setup & Schema</h3>
-                <div class="lighting-diagram-wrapper">
-                  ${lightingSvgStr}
-                </div>
-                <div class="lighting-details-list">
-                  <div class="lighting-detail-row">
-                    <span>Key Source</span>
-                    <span>${lightingSpecs.keySource}</span>
-                  </div>
-                  <div class="lighting-detail-row">
-                    <span>Key Modifier</span>
-                    <span>${lightingSpecs.keyModifier}</span>
-                  </div>
-                  <div class="lighting-detail-row">
-                    <span>Fill / Bounce</span>
-                    <span>${lightingSpecs.fillSource}</span>
-                  </div>
-                  <div class="lighting-detail-row">
-                    <span>Capture Device</span>
-                    <span>${lightingSpecs.cameraDevice}</span>
-                  </div>
-                  <div class="lighting-detail-row">
-                    <span>Focal Length</span>
-                    <span>${lightingSpecs.focalLength}</span>
+              ${project.lightingDiagram ? `
+                <div class="lighting-block">
+                  <h3 class="serif-title credits-title">Lighting Setup & Schema</h3>
+                  <div class="lighting-diagram-wrapper" style="background:#111; padding:15px; border-radius:4px; border:1px solid #222;">
+                    <img src="${project.lightingDiagram}" alt="Lighting Diagram" style="max-width:100%; height:auto;">
                   </div>
                 </div>
-              </div>
+              ` : ''}
             </div>
 
           </div>
@@ -555,32 +535,7 @@
     if (project.testimonials && project.testimonials.length > 0) {
       return project.testimonials[0];
     }
-    
-    // Curated aesthetic fallback reviews based on talents
-    const name = project.talent || 'Collaborator';
-    const fallbackReviews = {
-      'Rhythm Vohra': {
-        text: "The studio's focus on geometric lines and quiet studio portraiture created an incredibly relaxed environment. The resulting high-contrast portraits capture a raw, authentic emotion that is rare to find.",
-        author: "Rhythm Vohra",
-        role: "Editorial Model"
-      },
-      'Prachi Choudhary': {
-        text: "Collaborating on this editorial was seamless. The precision of the studio flash setups, combined with an eye for minimal architectural backgrounds, produced stunning, publication-ready fashion frames.",
-        author: "Prachi Choudhary",
-        role: "Fashion Talent"
-      },
-      'Kunaal Raghav': {
-        text: "A highly professional studio atmosphere. The technical planning behind the lighting systems was evident in every shot. The images carry a deep cinematic quality that stands out perfectly.",
-        author: "Kunaal Raghav",
-        role: "Creative Director & Talent"
-      }
-    };
-
-    return fallbackReviews[name] || {
-      text: "The photographic session was structured with creative clarity. The focus on raw styling and meticulous key lighting highlights character and material weight beautifully.",
-      author: name,
-      role: "Campaign Talent"
-    };
+    return null;
   }
 
   function getLightingSpecs(project) {

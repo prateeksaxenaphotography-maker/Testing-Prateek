@@ -318,8 +318,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Testimonials
     const testimonialQuotes = document.getElementById('testimonial-quotes');
+    const testimonialsBlock = document.getElementById('project-testimonials');
     testimonialQuotes.innerHTML = '';
     
+    let hasTestimonials = false;
     if (shoot.testimonials && shoot.testimonials.length > 0) {
       shoot.testimonials.forEach(t => {
         const text = typeof t === 'string' ? t : t.text;
@@ -331,35 +333,49 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `;
       });
-    } else {
-      // Elegant default testimonial matching Noida talent feedback
-      const talentName = shoot.talent || 'Rhythm Vohra';
-      testimonialQuotes.innerHTML = `
-        <div class="testimonial-card">
-          <p class="testimonial-text">"Working with Prateek was a completely seamless creative experience. His focus on lighting structures and compositional detail during the session exceeded all our editorial expectations."</p>
-          <div class="testimonial-author">— ${talentName}</div>
-        </div>
-      `;
+      hasTestimonials = true;
+    }
+
+    if (testimonialsBlock) {
+      testimonialsBlock.style.display = hasTestimonials ? 'block' : 'none';
     }
 
     // Lighting Setup details
     const lightingContent = document.getElementById('lighting-content');
+    const lightingBlock = document.getElementById('project-lighting');
+    let hasLighting = false;
+
     if (shoot.lightingDiagram) {
-      lightingContent.innerHTML = `
-        <img src="${shoot.lightingDiagram}" alt="Lighting Diagram" style="max-width:100%; height:auto; margin-bottom:1rem;">
-        <div class="lighting-title">Technical Diagram</div>
-        <p class="lighting-desc">Studio layout mapping out strobe, diffusion panels, and fill positions.</p>
-      `;
-    } else {
-      lightingContent.innerHTML = `
-        <svg class="lighting-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="2" y1="12" x2="22" y2="12"></line>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-        </svg>
-        <div class="lighting-title">Strobe & Ambient Mix</div>
-        <p class="lighting-desc">This shoot was executed using a single key strobe (120cm Octabox, 45° camera right) blended with natural window backlight.</p>
-      `;
+      if (lightingContent) {
+        lightingContent.innerHTML = `
+          <img src="${shoot.lightingDiagram}" alt="Lighting Diagram" style="max-width:100%; height:auto; margin-bottom:1rem;">
+          <div class="lighting-title">Technical Diagram</div>
+          <p class="lighting-desc">Studio layout mapping out strobe, diffusion panels, and fill positions.</p>
+        `;
+      }
+      hasLighting = true;
+    }
+
+    if (lightingBlock) {
+      lightingBlock.style.display = hasLighting ? 'block' : 'none';
+    }
+
+    // Manage extended grid details visibility & layout
+    const extendedSection = document.querySelector('.extended-details-section');
+    if (extendedSection) {
+      if (!hasTestimonials && !hasLighting) {
+        extendedSection.style.display = 'none';
+      } else {
+        extendedSection.style.display = 'block';
+        const extendedGrid = extendedSection.querySelector('.extended-grid');
+        if (extendedGrid) {
+          if (hasTestimonials && hasLighting) {
+            extendedGrid.style.gridTemplateColumns = '1fr 1fr';
+          } else {
+            extendedGrid.style.gridTemplateColumns = '1fr';
+          }
+        }
+      }
     }
 
     // Render Credits
@@ -426,10 +442,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let techHtml = '';
     
     // Brand
-    if (shoot.brand && shoot.brand !== 'Personal Project') {
+    if (shoot.brand) {
       techHtml += `<div class="credit-item"><span class="credit-item-label">Client / Brand</span><span>${shoot.brand}</span></div>`;
-    } else {
-      techHtml += `<div class="credit-item"><span class="credit-item-label">Client</span><span>Personal Project</span></div>`;
     }
 
     // Type
@@ -445,15 +459,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Gear
     if (shoot.gear) {
       techHtml += `<div class="credit-item"><span class="credit-item-label">Camera & Lens</span><span>${shoot.gear}</span></div>`;
-    } else {
-      techHtml += `<div class="credit-item"><span class="credit-item-label">Gear</span><span>Mirrorless & 85mm Prime</span></div>`;
     }
 
     // Rights
     if (shoot.rights) {
       techHtml += `<div class="credit-item"><span class="credit-item-label">Usage Rights</span><span>${shoot.rights}</span></div>`;
-    } else {
-      techHtml += `<div class="credit-item"><span class="credit-item-label">Usage Rights</span><span>Editorial & Portfolio License</span></div>`;
     }
 
     // Instagram Links
