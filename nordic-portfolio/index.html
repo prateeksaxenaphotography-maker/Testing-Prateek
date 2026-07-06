@@ -12,6 +12,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function() {
+      function updateTheme() {
+        const override = localStorage.getItem("tnp-theme-override") || "auto";
+        const systemLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+        if (override === "light" || (override === "auto" && systemLight)) {
+          document.documentElement.classList.add("theme-light");
+        } else {
+          document.documentElement.classList.remove("theme-light");
+        }
+      }
+      updateTheme();
+      window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", updateTheme);
+      window.addEventListener("storage", (e) => {
+        if (e.key === "tnp-theme-override") updateTheme();
+      });
+      window.applyTnpThemeOverride = updateTheme;
+    })();
+  </script>
 </head>
 <body>
 

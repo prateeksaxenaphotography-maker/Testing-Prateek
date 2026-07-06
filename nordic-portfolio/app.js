@@ -1110,6 +1110,39 @@
   function setupAdminMode() {
     const adminBtn = document.getElementById("adminModeBtnFooter");
     if (!adminBtn) return;
+
+    let themeOverrideBtn = document.getElementById("themeOverrideBtn");
+    if (!themeOverrideBtn) {
+      themeOverrideBtn = document.createElement("button");
+      themeOverrideBtn.id = "themeOverrideBtn";
+      themeOverrideBtn.style.cssText = "background:none; border:1px solid #555; color:#999; font-family:inherit; font-size:10px; font-weight:700; padding:5px 12px; border-radius:100px; cursor:pointer; text-transform:uppercase; letter-spacing:0.1em; transition:all 0.3s; outline:none; margin-left:10px;";
+      adminBtn.parentNode.appendChild(themeOverrideBtn);
+      
+      themeOverrideBtn.addEventListener("click", () => {
+        const currentOverride = localStorage.getItem("tnp-theme-override") || "auto";
+        let nextOverride = "auto";
+        if (currentOverride === "auto") nextOverride = "light";
+        else if (currentOverride === "light") nextOverride = "dark";
+        else nextOverride = "auto";
+        
+        localStorage.setItem("tnp-theme-override", nextOverride);
+        if (typeof window.applyTnpThemeOverride === "function") {
+          window.applyTnpThemeOverride();
+        }
+        updateThemeOverrideBtn();
+      });
+    }
+
+    function updateThemeOverrideBtn() {
+      const active = isAdmin();
+      if (active) {
+        const currentOverride = localStorage.getItem("tnp-theme-override") || "auto";
+        themeOverrideBtn.textContent = `Theme: ${currentOverride}`;
+        themeOverrideBtn.style.display = "inline-block";
+      } else {
+        themeOverrideBtn.style.display = "none";
+      }
+    }
     
     function updateAdminBtn() {
       const active = isAdmin();
@@ -1121,6 +1154,7 @@
       if (navUploadLi) {
         navUploadLi.style.display = active ? "inline-block" : "none";
       }
+      updateThemeOverrideBtn();
     }
     
     adminBtn.addEventListener("click", () => {
