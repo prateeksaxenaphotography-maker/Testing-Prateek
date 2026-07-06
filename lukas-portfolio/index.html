@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lukas — photographer portfolio</title>
+  <meta name="description" content="A minimalist landscape and fashion photography portfolio, styled in the Lukas theme. Noida, Delhi NCR, India.">
+  
+  <!-- Fonts: Inter for UI/Body, Playfair Display for Editorial Titles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-mode">
+  
+  <!-- Centered Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#/" class="logo-link">
+        <h1 class="logo-title">thenerdyphotographer.in</h1>
+      </a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="#/" class="nav-item active" data-page="work">Work</a></li>
+          <li><a href="#/book" class="nav-item" data-page="book">Book a Shoot</a></li>
+          <li><a href="#/about" class="nav-item" data-page="about">About</a></li>
+          <li id="nav-upload-li" style="display: none;"><a href="#/upload" class="nav-item" data-page="upload">Publish Shoot</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="viewport-main">
+    
+    <!-- Loader -->
+    <div id="loader" class="loader">
+      <div class="loader-spinner"></div>
+    </div>
+
+    <!-- View: Portfolio Work Grid (Lukas-style project grid) -->
+    <section id="view-work" class="view active">
+      <!-- Activity/Category Filters -->
+      <div class="filters-container"></div>
+      
+      <!-- Portfolio Grid -->
+      <div id="portfolio-grid" class="portfolio-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- View: Project Details View -->
+    <section id="view-project" class="view">
+      <div class="project-header">
+        <a href="#/" class="back-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Back to Work</span>
+        </a>
+        <h2 id="project-title" class="project-title">Project Title</h2>
+        <div id="project-meta-top" class="project-meta-top">
+          <span id="project-season">Season</span> &bull; 
+          <span id="project-location">Location</span> &bull; 
+          <span id="project-activity">Activity</span>
+        </div>
+      </div>
+
+      <!-- Project Story / Description -->
+      <div id="project-desc-container" class="project-description-container">
+        <p id="project-description" class="project-description-text">Project creative narrative...</p>
+      </div>
+
+      <!-- Project Photo Stack -->
+      <div id="project-photos" class="project-photos">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Extended Details: Testimonials & Lighting Diagrams -->
+      <div class="extended-details-section">
+        <div class="extended-grid">
+          <!-- Testimonials -->
+          <div id="project-testimonials" class="detail-block testimonials-block">
+            <h3 class="block-title">Testimonials</h3>
+            <div id="testimonial-quotes" class="testimonial-quotes">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+          <!-- Lighting Diagram -->
+          <div id="project-lighting" class="detail-block lighting-block">
+            <h3 class="block-title">Lighting Setup</h3>
+            <div id="lighting-content" class="lighting-content">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Credits / Technical details sidebar/footer -->
+      <div class="project-credits-section">
+        <div class="credits-grid">
+          <div class="credit-block">
+            <span class="credit-label">Creative Team</span>
+            <div id="credit-team-details" class="credit-value">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+          <div class="credit-block">
+            <span class="credit-label">Production details</span>
+            <div id="credit-tech-details" class="credit-value">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- View: Book a Shoot Form Page -->
+    <section id="view-book" class="view">
+      <div class="booking-container">
+        <div class="booking-header">
+          <h2 class="booking-title">Book a Session</h2>
+          <p class="booking-subtitle">Collaborate with our Noida-based creative studio on your next project</p>
+        </div>
+
+        <form id="booking-form" class="booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="book-name" class="form-label">Name *</label>
+              <input type="text" id="book-name" required class="form-input" placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="book-role" class="form-label">Role / Organization *</label>
+              <input type="text" id="book-role" required class="form-input" placeholder="e.g. Designer, Stylist, Brand Manager, MUA, Talent">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="book-email" class="form-label">Email *</label>
+              <input type="email" id="book-email" required class="form-input" placeholder="Your email address">
+            </div>
+            <div class="form-group">
+              <label for="book-phone" class="form-label">Phone Number</label>
+              <input type="tel" id="book-phone" class="form-input" placeholder="Your contact number">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="book-type" class="form-label">Shoot Type *</label>
+              <select id="book-type" required class="form-input">
+                <option value="" disabled selected>Select shoot type</option>
+                <option value="Portrait">Portrait Session</option>
+                <option value="Fashion">Fashion Editorial</option>
+                <option value="Campaign">Brand Campaign</option>
+                <option value="Commercial">Commercial Project</option>
+                <option value="Test Shoot">Creative Test Shoot</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="book-date" class="form-label">Preferred Date *</label>
+              <input type="date" id="book-date" required class="form-input">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="book-brand" class="form-label">Brand / Client / Collection (Optional)</label>
+              <input type="text" id="book-brand" class="form-input" placeholder="e.g. Vogue, Personal Project, Local Brand">
+            </div>
+            <div class="form-group">
+              <label for="book-instagram" class="form-label">Instagram Handle (Optional)</label>
+              <input type="text" id="book-instagram" class="form-input" placeholder="e.g. @yourhandle">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="book-concept" class="form-label">Creative Concept / Brief *</label>
+            <textarea id="book-concept" required class="form-input form-textarea" placeholder="Describe your vision, mood, styling ideas, and the narrative you want to capture..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="book-gear" class="form-label">Special Gear / Studio Requirements (Optional)</label>
+            <input type="text" id="book-gear" class="form-input" placeholder="e.g. Medium format, continuous lights, outdoor reflectors">
+          </div>
+
+          <button type="submit" class="booking-submit-btn" id="bookSubmitBtn">Send Booking Request</button>
+          
+          <div id="booking-success-msg" class="booking-success-msg">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="success-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <div>
+              <strong>Request Received!</strong> We will get in touch with you shortly.
+            </div>
+          </div>
+        </form>
+
+        <!-- Display Local Bookings Archive (Stays local, for client review) -->
+        <div class="bookings-archive">
+          <h3 class="archive-title">Your Local Bookings</h3>
+          <div id="bookings-list" class="bookings-list">
+            <p class="no-bookings">No local bookings made yet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- View: About Page -->
+    <section id="view-about" class="view">
+      <div class="about-container">
+        <div class="about-hero-image">
+          <div class="about-visual-fallback">
+            <span class="studio-initials">TNP</span>
+          </div>
+        </div>
+        <div class="about-content">
+          <h2 class="about-title">thenerdyphotographer.in</h2>
+          <p class="about-subtitle">Visual Storytelling & Creative Photography</p>
+          <div class="about-text">
+            <p>Based in Noida, Noida / Delhi NCR, our studio focuses on creating cinematic, high-fashion, editorial, and portrait photography.</p>
+            <p>We blend storytelling with structural composition and soft lighting diagramming to deliver a signature, narrative-driven aesthetic.</p>
+            <p>Available for editorial commissions, brand campaigns, and creative test shoots.</p>
+          </div>
+          <div class="about-details">
+            <div class="about-info-row">
+              <span class="info-label">Location</span>
+              <span class="info-value">Noida, Uttar Pradesh, India</span>
+            </div>
+            <div class="about-info-row">
+              <span class="info-label">Instagram</span>
+              <span class="info-value"><a href="https://www.instagram.com/thenerdyphotographer.in/" target="_blank" rel="noopener">@thenerdyphotographer.in</a></span>
+            </div>
+            <div class="about-info-row">
+              <span class="info-label">Kavyar</span>
+              <span class="info-value"><a href="https://kavyar.com/uucurn46ib8f" target="_blank" rel="noopener">kavyar.com/uucurn46ib8f</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+    <!-- View: Upload Page (Admin) -->
+    <section id="view-upload" class="view">
+      <div class="booking-container">
+        <div class="booking-header">
+          <h2 class="booking-title">Publish a Photoshoot</h2>
+          <p class="booking-subtitle">Create a new gallery shoot and save it to the local browser archive.</p>
+        </div>
+
+        <form id="upload-form" class="booking-form" autocomplete="off">
+          <div class="form-group">
+            <label for="upload-images" class="form-label" style="display:block; margin-bottom:12px; font-weight:700;">Upload Photos *</label>
+            <div id="lukas-dropzone" class="dropzone" style="border: 2px dashed #444; border-radius: 8px; padding: 30px; text-align: center; cursor: pointer; background: #111; margin-bottom: 20px;">
+              <input type="file" id="upload-file-input" accept="image/*" multiple style="display:none;" />
+              <p style="margin:0; font-size:14px; color:#aaa;">Drag photos here or <span style="text-decoration:underline; color:#c3a078;">browse files</span></p>
+            </div>
+            <div id="staging-grid" class="thumb-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; margin-bottom: 20px;"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="f_title" class="form-label">Shoot Title *</label>
+            <input type="text" id="f_title" required class="form-input" placeholder="e.g. Merrell Campaign — Fall '26">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f_brand" class="form-label">Brand</label>
+              <input type="text" id="f_brand" class="form-input" placeholder="e.g. Merrell, Vogue, Independent">
+            </div>
+            <div class="form-group">
+              <label for="f_activity" class="form-label">Activity / Genre *</label>
+              <select id="f_activity" required class="form-input">
+                <option value="Portrait">Portrait</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Editorial">Editorial</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Sports">Sports</option>
+                <option value="Beauty">Beauty</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f_type" class="form-label">Type</label>
+              <input type="text" id="f_type" class="form-input" placeholder="e.g. Commercial Campaign, Test Shoot">
+            </div>
+            <div class="form-group">
+              <label for="f_season" class="form-label">Season / Year</label>
+              <input type="text" id="f_season" class="form-input" placeholder="e.g. Autumn 2026">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f_photographer" class="form-label">Photographer</label>
+              <input type="text" id="f_photographer" class="form-input" placeholder="Prateek Saxena">
+            </div>
+            <div class="form-group">
+              <label for="f_ad" class="form-label">Art Director</label>
+              <input type="text" id="f_ad" class="form-input" placeholder="—">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f_stylist" class="form-label">Stylist</label>
+              <input type="text" id="f_stylist" class="form-input" placeholder="—">
+            </div>
+            <div class="form-group">
+              <label for="f_hair" class="form-label">Hair Stylist</label>
+              <input type="text" id="f_hair" class="form-input" placeholder="—">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f_mua" class="form-label">Makeup Artist (MUA)</label>
+              <input type="text" id="f_mua" class="form-input" placeholder="—">
+            </div>
+            <div class="form-group">
+              <label for="f_talent" class="form-label">Talent / Models</label>
+              <input type="text" id="f_talent" class="form-input" placeholder="e.g. Model A, Model B">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f_location" class="form-label">Location</label>
+              <input type="text" id="f_location" class="form-input" placeholder="e.g. Noida Studio 1">
+            </div>
+            <div class="form-group">
+              <label for="f_date" class="form-label">Date Shot</label>
+              <input type="date" id="f_date" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="f_desc" class="form-label">Description narrative</label>
+            <textarea id="f_desc" class="form-input form-textarea" placeholder="Describe the shoot's visual narrative or creative concept..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f_gear" class="form-label">Camera / Gear Specs</label>
+              <input type="text" id="f_gear" class="form-input" placeholder="e.g. Hasselblad X2D · 38mm f/2.5">
+            </div>
+            <div class="form-group">
+              <label for="f_rights" class="form-label">Usage Rights</label>
+              <input type="text" id="f_rights" class="form-input" placeholder="e.g. Digital + Print, Worldwide">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f_instagram" class="form-label">Instagram Handles</label>
+              <input type="text" id="f_instagram" class="form-input" placeholder="e.g. @yourhandle, @talenthandle">
+            </div>
+            <div class="form-group">
+              <label for="f_link" class="form-label">Portfolio Link</label>
+              <input type="url" id="f_link" class="form-input" placeholder="https://thenerdyphotographer.in">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="f_diagram" class="form-label">Lighting Diagram Image (Optional)</label>
+            <div style="display: flex; gap: 14px; align-items: center;">
+              <input type="file" id="f_diagram_file" accept="image/*" class="form-input" style="flex:1;">
+              <select id="f_diagram_visibility" class="form-input" style="width: 140px;">
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+              </select>
+            </div>
+            <div id="diagram-preview-box" style="margin-top: 10px; display: none;">
+              <img id="f_diagram_img" style="max-height: 120px; border-radius: 4px; border: 1px solid #444;" alt="Diagram Preview">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Testimonial 1 (Quote & By)</label>
+              <div style="display:flex; gap:10px;">
+                <input type="text" id="f_quote_1" class="form-input" style="flex:2;" placeholder="Quote text">
+                <input type="text" id="f_quoteby_1" class="form-input" style="flex:1;" placeholder="By">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top:10px;">
+            <label style="display: flex; align-items: center; gap: 8px; font-weight: 700; cursor: pointer;">
+              <input id="f_featured" type="checkbox" checked style="width: 16px; height: 16px; accent-color: var(--accent,#c3a078);" />
+              Feature on home grid
+            </label>
+          </div>
+
+          <button type="submit" class="booking-submit-btn" id="uploadSubmitBtn" style="margin-top: 24px;">Publish Shoot</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+    <button class="lightbox-next" aria-label="Next image">&#10095;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Lightbox View">
+    </div>
+    <div id="lightbox-caption" class="lightbox-caption">Photo Caption</div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="footer-copy">&copy; 2026 thenerdyphotographer.in. All rights reserved.</p>
+      <p class="footer-design">Lukas Portfolio Layout</p>
+      <div style="margin-top: 10px;">
+        <button class="admin-mode-btn" id="adminModeBtnFooter" style="background:none; border:1px solid #555; color:#999; font-family:inherit; font-size:10px; font-weight:700; padding:5px 12px; border-radius:100px; cursor:pointer; text-transform:uppercase; letter-spacing:0.1em; transition:all 0.3s; outline:none;">Admin Mode: Off</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

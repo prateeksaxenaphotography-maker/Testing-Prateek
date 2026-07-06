@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Nerdy Photographer — Nordic Editorial Portfolio</title>
+  <meta name="description" content="A premium photography portfolio showcasing editorial, fashion, and portrait work with a custom Nordic Editorial aesthetic. Book a session online.">
+  
+  <!-- Google Fonts: Playfair Display for editorial serif, Outfit for clean sans-serif, JetBrains Mono for specs -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Minimalist Header -->
+  <header id="main-header">
+    <div class="header-container">
+      <a href="#/" class="logo-link" id="nav-logo">
+        <span class="logo-brand">thenerdyphotographer</span><span class="logo-tld">.in</span>
+      </a>
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="#/" class="nav-item active" id="nav-link-work">Work</a>
+        <a href="#/book" class="nav-item" id="nav-link-book">Book a Session</a>
+        <a href="#/about" class="nav-item" id="nav-link-about">About</a>
+        <a href="#/upload" class="nav-item" id="nav-link-upload" style="display: none;">Publish Shoot</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main id="app-container">
+    
+    <!-- Work / Portfolio View -->
+    <section id="work-view" class="view-section active">
+      <div class="filter-wrapper">
+        <div class="filter-label">Filter by Activity:</div>
+        <div id="filter-bar" class="filter-bar">
+          <!-- Dynamically populated activities -->
+        </div>
+      </div>
+      <div class="scroll-helper">
+        <span class="helper-text">Scroll horizontally or use wheel to navigate</span>
+        <div class="helper-line"></div>
+      </div>
+      <div id="portfolio-grid" class="horizontal-scroll-container">
+        <!-- Dynamically populated project cards -->
+      </div>
+    </section>
+
+    <!-- Project Details View -->
+    <section id="project-view" class="view-section">
+      <!-- Dynamically rendered project details -->
+    </section>
+
+    <!-- Book a Shoot View -->
+    <section id="book-view" class="view-section">
+      <div class="editorial-container">
+        <div class="booking-grid">
+          
+          <!-- Booking Form -->
+          <div class="booking-form-wrapper">
+            <h2 class="view-title serif-title">Book a Session</h2>
+            <p class="view-subtitle">Collaborate on a project, request a commercial quote, or schedule a creative session. Fill out the details below, and we'll reply with a tailored concept proposal within 48 hours.</p>
+            
+            <form id="booking-form" class="booking-form" novalidate>
+              <div class="form-group">
+                <input type="text" id="booking-name" name="name" required placeholder=" " class="form-input">
+                <label for="booking-name" class="form-label">Your Name *</label>
+                <span class="form-error">Please enter your name</span>
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="booking-role" name="role" required placeholder=" " class="form-input">
+                <label for="booking-role" class="form-label">Role / Organization *</label>
+                <span class="form-error">Please enter your role</span>
+              </div>
+              
+              <div class="form-group">
+                <input type="email" id="booking-email" name="email" required placeholder=" " class="form-input">
+                <label for="booking-email" class="form-label">Email Address *</label>
+                <span class="form-error">Please enter a valid email address</span>
+              </div>
+
+              <div class="form-group">
+                <input type="tel" id="booking-phone" name="phone" placeholder=" " class="form-input">
+                <label for="booking-phone" class="form-label">Phone Number</label>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <select id="booking-type" name="type" required class="form-select">
+                    <option value="" disabled selected hidden></option>
+                    <!-- Dynamically populated -->
+                  </select>
+                  <label for="booking-type" class="form-label-select">Shoot Type *</label>
+                  <span class="form-error">Select a project type</span>
+                </div>
+                
+                <div class="form-group">
+                  <input type="date" id="booking-date" name="date" required class="form-input">
+                  <label for="booking-date" class="form-label-date">Preferred Date *</label>
+                  <span class="form-error">Select a valid date</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <select id="booking-brand" name="brand" required class="form-select">
+                  <option value="" disabled selected hidden></option>
+                  <!-- Dynamically populated -->
+                </select>
+                <label for="booking-brand" class="form-label-select">Target Brand / Association</label>
+                <span class="form-error">Select a brand category</span>
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="booking-instagram" name="instagram" placeholder=" " class="form-input">
+                <label for="booking-instagram" class="form-label">Instagram Handle</label>
+              </div>
+
+              <div class="form-group">
+                <textarea id="booking-concept" name="concept" rows="4" required placeholder=" " class="form-textarea"></textarea>
+                <label for="booking-concept" class="form-label">Shoot Concept / Moodboard Idea *</label>
+                <span class="form-error">Please share some brief concept notes</span>
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="booking-gear" name="gear" placeholder=" " class="form-input">
+                <label for="booking-gear" class="form-label">Preferred Gear / Style (e.g. Medium Format, 35mm Analog, Digital)</label>
+              </div>
+
+              <button type="submit" id="submit-booking-btn" class="submit-btn">
+                <span class="btn-text">Submit Inquiry</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Bookings List & Overview -->
+          <div class="bookings-list-wrapper">
+            <h3 class="serif-title list-title">Current Inquiries</h3>
+            <p class="list-subtitle">Stored locally in your session database.</p>
+            <div id="bookings-list" class="bookings-list">
+              <!-- Dynamically populated from localStorage -->
+              <div class="empty-state">No active inquiries submitted yet. Your requests will appear here.</div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- About View -->
+    <section id="about-view" class="view-section">
+      <div class="editorial-container about-grid">
+        <div class="about-image-wrapper">
+          <div class="about-image-overlay"></div>
+          <img src="" id="about-portrait-img" alt="Photographer self-portrait in studio" class="about-portrait-img">
+        </div>
+        <div class="about-content">
+          <h2 class="serif-title about-title">Nordic Calm.<br>Editorial Precision.</h2>
+          <p class="about-lead">A visual philosophy rooted in simplicity, natural lighting systems, and cinematic stillness. Based in Noida/Delhi NCR, creating for brands and editorial titles worldwide.</p>
+          <div class="about-bio">
+            <p>Operating under the label <strong>thenerdyphotographer.in</strong>, I capture fashion, portraits, and editorial stories. Inspired by high-contrast black and white photography, industrial architecture, and Scandinavian minimalism, each series is approached as a study in light, form, and emotion.</p>
+            <p>Every project represents a commitment to high production quality, precise studio lighting setups, and deep narrative. I combine analog film techniques with high-resolution digital systems to create timeless images.</p>
+          </div>
+          <div class="about-details-grid">
+            <div class="about-detail-item">
+              <span class="detail-label">Client List</span>
+              <span class="detail-value">Vogue, Patagonia, National Geographic, Independent Film Labs, Local Cafe</span>
+            </div>
+            <div class="about-detail-item">
+              <span class="detail-label">Representations</span>
+              <span class="detail-value">Studio Noida, NCR Area</span>
+            </div>
+            <div class="about-detail-item">
+              <span class="detail-label">Exhibitions</span>
+              <span class="detail-value">2025 Delhi Photo Festival, 2026 Solo Exhibition 'Still & Dynamic'</span>
+            </div>
+          </div>
+          <div style="margin-top: 40px; border-top: 1px solid #333; padding-top: 20px;">
+            <button class="admin-mode-btn" id="adminModeBtnFooter" style="background:none; border:1px solid #555; color:#999; font-family:inherit; font-size:10px; font-weight:700; padding:5px 12px; border-radius:100px; cursor:pointer; text-transform:uppercase; letter-spacing:0.1em; transition:all 0.3s; outline:none;">Admin Mode: Off</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- View: Upload Page (Admin) -->
+    <section id="upload-view" class="view-section" style="padding-top: 6rem; padding-bottom: 4rem;">
+      <div class="booking-container" style="max-width: 800px; margin: 0 auto; padding: 0 2rem;">
+        <div class="booking-header" style="text-align: center; margin-bottom: 3.5rem;">
+          <h2 class="serif-title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">Publish a Photoshoot</h2>
+          <p style="color: #999;">Create a new gallery shoot and save it to the local browser archive.</p>
+        </div>
+
+        <form id="upload-form" class="booking-form" autocomplete="off" style="display: flex; flex-direction: column; gap: 1.8rem;">
+          <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <label for="upload-images" style="display:block; margin-bottom:12px; font-weight:700;">Upload Photos *</label>
+            <div id="nordic-dropzone" class="dropzone" style="border: 2px dashed #444; border-radius: 8px; padding: 30px; text-align: center; cursor: pointer; background: #111; margin-bottom: 20px;">
+              <input type="file" id="upload-file-input" accept="image/*" multiple style="display:none;" />
+              <p style="margin:0; font-size:14px; color:#aaa;">Drag photos here or <span style="text-decoration:underline; color:#c3a078;">browse files</span></p>
+            </div>
+            <div id="staging-grid" class="thumb-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; margin-bottom: 20px;"></div>
+          </div>
+
+          <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <label for="f_title" style="font-weight:700;">Shoot Title *</label>
+            <input type="text" id="f_title" required placeholder="e.g. Merrell Campaign — Fall '26" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_brand" style="font-weight:700;">Brand</label>
+              <input type="text" id="f_brand" placeholder="e.g. Merrell, Vogue, Independent" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_activity" style="font-weight:700;">Activity / Genre *</label>
+              <select id="f_activity" required style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+                <option value="Portrait">Portrait</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Editorial">Editorial</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Sports">Sports</option>
+                <option value="Beauty">Beauty</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_type" style="font-weight:700;">Type</label>
+              <input type="text" id="f_type" placeholder="e.g. Commercial Campaign, Test Shoot" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_season" style="font-weight:700;">Season / Year</label>
+              <input type="text" id="f_season" placeholder="e.g. Autumn 2026" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_photographer" style="font-weight:700;">Photographer</label>
+              <input type="text" id="f_photographer" placeholder="Prateek Saxena" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_ad" style="font-weight:700;">Art Director</label>
+              <input type="text" id="f_ad" placeholder="—" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_stylist" style="font-weight:700;">Stylist</label>
+              <input type="text" id="f_stylist" placeholder="—" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_hair" style="font-weight:700;">Hair Stylist</label>
+              <input type="text" id="f_hair" placeholder="—" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_mua" style="font-weight:700;">Makeup Artist (MUA)</label>
+              <input type="text" id="f_mua" placeholder="—" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_talent" style="font-weight:700;">Talent / Models</label>
+              <input type="text" id="f_talent" placeholder="e.g. Model A, Model B" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_location" style="font-weight:700;">Location</label>
+              <input type="text" id="f_location" placeholder="e.g. Noida Studio 1" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_date" style="font-weight:700;">Date Shot</label>
+              <input type="date" id="f_date" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+          </div>
+
+          <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <label for="f_desc" style="font-weight:700;">Description narrative</label>
+            <textarea id="f_desc" placeholder="Describe the shoot's visual narrative or creative concept..." style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px; min-height: 100px; resize: vertical;"></textarea>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_gear" style="font-weight:700;">Camera / Gear Specs</label>
+              <input type="text" id="f_gear" placeholder="e.g. Hasselblad X2D · 38mm f/2.5" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_rights" style="font-weight:700;">Usage Rights</label>
+              <input type="text" id="f_rights" placeholder="e.g. Digital + Print, Worldwide" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_instagram" style="font-weight:700;">Instagram Handles</label>
+              <input type="text" id="f_instagram" placeholder="e.g. @yourhandle, @talenthandle" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label for="f_link" style="font-weight:700;">Portfolio Link</label>
+              <input type="url" id="f_link" placeholder="https://thenerdyphotographer.in" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px;">
+            </div>
+          </div>
+
+          <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <label for="f_diagram" style="font-weight:700;">Lighting Diagram Image (Optional)</label>
+            <div style="display: flex; gap: 14px; align-items: center;">
+              <input type="file" id="f_diagram_file" accept="image/*" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px; flex:1;">
+              <select id="f_diagram_visibility" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px; width: 140px;">
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+              </select>
+            </div>
+            <div id="diagram-preview-box" style="margin-top: 10px; display: none;">
+              <img id="f_diagram_img" style="max-height: 120px; border-radius: 4px; border: 1px solid #444;" alt="Diagram Preview">
+            </div>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+            <div class="form-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label style="font-weight:700;">Testimonial 1 (Quote & By)</label>
+              <div style="display:flex; gap:10px;">
+                <input type="text" id="f_quote_1" placeholder="Quote text" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px; flex:2;">
+                <input type="text" id="f_quoteby_1" placeholder="By" style="padding: 1rem; background: #111; border: 1px solid #333; color: #fff; font-family: inherit; font-size: 0.95rem; border-radius: 4px; flex:1;">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top:10px;">
+            <label style="display: flex; align-items: center; gap: 8px; font-weight: 700; cursor: pointer; font-size: 0.95rem;">
+              <input id="f_featured" type="checkbox" checked style="width: 16px; height: 16px; accent-color: var(--accent,#c3a078);" />
+              Feature on home grid
+            </label>
+          </div>
+
+          <button type="submit" id="uploadSubmitBtn" style="margin-top: 24px; padding: 1.2rem; background: #fff; color: #000; border: none; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s; font-family: inherit;">Publish Shoot</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+
+  <!-- Fullscreen Lightbox Overlay -->
+  <div id="lightbox" class="lightbox-overlay" aria-hidden="true" role="dialog">
+    <button class="lightbox-close" id="lightbox-close-btn" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox-nav prev" id="lightbox-prev-btn" aria-label="Previous image">&#8592;</button>
+    <button class="lightbox-nav next" id="lightbox-next-btn" aria-label="Next image">&#8594;</button>
+    <div class="lightbox-content">
+      <img src="" id="lightbox-img" alt="Enlarged photography view" class="lightbox-image">
+      <div class="lightbox-caption">
+        <div class="lightbox-project-title" id="lightbox-caption-title">Project Title</div>
+        <div class="lightbox-photo-index" id="lightbox-caption-index">1 / 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include data first, then app router -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
