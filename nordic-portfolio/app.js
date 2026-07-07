@@ -1,6 +1,6 @@
 /* ============================================================
    app.js
-   thenerdyphotographer.in — Nordic Editorial Theme Router & logic
+   nerdyphotographer.in — Nordic Editorial Theme Router & logic
    ============================================================ */
 
 (function () {
