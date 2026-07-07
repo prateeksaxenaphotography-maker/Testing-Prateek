@@ -1706,6 +1706,28 @@ button {
   display: grid;
   place-items: center;
 }
+.thumb-move-left, .thumb-move-right {
+  position: absolute;
+  top: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(14,14,14,.78);
+  color: #fff;
+  border: 0;
+  font-size: 11px;
+  font-weight: bold;
+  z-index: 2;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.thumb-move-left { left: 4px; }
+.thumb-move-right { left: 30px; }
+.thumb-move-left:disabled, .thumb-move-right:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 .thumb-align-ctrl {
   position: absolute;
   bottom: 0;

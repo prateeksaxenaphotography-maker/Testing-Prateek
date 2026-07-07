@@ -1019,6 +1019,8 @@ document.addEventListener('DOMContentLoaded', () => {
         thumb.innerHTML = `
           <img src="${item.dataUrl}" alt="Staged Photo" />
           <button type="button" class="thumb-remove" data-index="${index}">&times;</button>
+          <button type="button" class="thumb-move-left" data-index="${index}" ${index === 0 ? "disabled" : ""}>&lt;</button>
+          <button type="button" class="thumb-move-right" data-index="${index}" ${index === staged.length - 1 ? "disabled" : ""}>&gt;</button>
           <div class="thumb-cover-ctrl">
             <label>
               <input type="radio" name="cover-select" class="thumb-cover-radio" ${item.isCover ? "checked" : ""} data-index="${index}" />
@@ -1039,6 +1041,26 @@ document.addEventListener('DOMContentLoaded', () => {
           staged.splice(index, 1);
           if (item.isCover && staged.length > 0) staged[0].isCover = true;
           renderStaged();
+        });
+        
+        thumb.querySelector(".thumb-move-left").addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (index > 0) {
+            const temp = staged[index];
+            staged[index] = staged[index - 1];
+            staged[index - 1] = temp;
+            renderStaged();
+          }
+        });
+
+        thumb.querySelector(".thumb-move-right").addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (index < staged.length - 1) {
+            const temp = staged[index];
+            staged[index] = staged[index + 1];
+            staged[index + 1] = temp;
+            renderStaged();
+          }
         });
         
         thumb.querySelector(".thumb-cover-radio").addEventListener("change", () => {
